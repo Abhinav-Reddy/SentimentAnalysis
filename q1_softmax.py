@@ -21,7 +21,8 @@ def softmax(x):
     """
 
     ### YOUR CODE HERE
-    raise NotImplementedError
+    x = np.exp(x - np.max(x, axis = -1, keepdims = True))
+    x = x/np.sum(x, axis = -1, keepdims = True)
     ### END YOUR CODE
     
     return x
