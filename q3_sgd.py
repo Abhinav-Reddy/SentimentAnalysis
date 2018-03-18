@@ -75,7 +75,8 @@ def sgd(f, x0, step, iterations, postprocessing = None, useSaved = False, PRINT_
 
         cost = None
         ### YOUR CODE HERE
-        raise NotImplementedError
+        cost, gradient = f(x)
+        x = x - step * gradient
         ### END YOUR CODE
         
         if iter % PRINT_EVERY == 0:
