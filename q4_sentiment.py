@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
 from big_data.data_utils import *
+
 
 from q3_sgd import load_saved_params, sgd
 from q4_softmaxreg import softmaxRegression, getSentenceFeature, accuracy, softmax_wrapper
@@ -10,7 +10,7 @@ from q4_softmaxreg import softmaxRegression, getSentenceFeature, accuracy, softm
 # NOTE: fill in one more "your code here" below before running!
 REGULARIZATION = None   # Assign a list of floats in the block below
 ### YOUR CODE HERE
-raise NotImplementedError
+REGULARIZATION = [0.0, 0.0001, 0.0002, 0.0004, 0.0008, 0.0016, 0.0032, 0.0064, 0.0128, 0.0256, 0.0512, 0.1024]
 ### END YOUR CODE
 
 # Load the dataset
@@ -86,7 +86,12 @@ BEST_REGULARIZATION = None
 BEST_WEIGHTS = None
 
 ### YOUR CODE HERE 
-raise NotImplementedError
+maxAccuracy = None
+for result in results:
+    if (maxAccuracy < result["dev"]):
+        maxAccuracy = result["dev"]
+        BEST_WEIGHTS = result["weights"]
+        BEST_REGULARIZATION = result["reg"]
 ### END YOUR CODE
 
 # Test your findings on the test set
